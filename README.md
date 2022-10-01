@@ -5,5 +5,5 @@ PoC, do not use this script for unethical purposes, you won't find any working a
 
 To do:
 
--Use context managers for read/write operations
--Add proxy functionality
+*Use context managers for read/write operations
+*Add proxy functionality
