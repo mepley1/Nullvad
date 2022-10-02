@@ -7,3 +7,7 @@ To do:
 
 - Use context managers for read/write operations
 - Add proxy functionality
+
+Known issues:
+
+- Script unnecessarily waits the full cooldown time when number of guesses is set to 1
