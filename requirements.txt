@@ -1,0 +1,8 @@
+colorama
+json
+os
+plyer
+random
+requests
+requests[socks]
+time
