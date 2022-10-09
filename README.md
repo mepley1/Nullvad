@@ -14,7 +14,7 @@ With the number of users they report, and the rate limiting that I've encountere
 - Choose an option: Create new account, account brute force, or brute force with proxy
   - If using a proxy, enter your full proxy URL including scheme i.e. `socks5h://1.2.3.4:4145`
 - Enter the number of guesses you want it to make
-- After each guess, the script will log the attempted account number in either `goodaccounts.txt` or `bad.txt`, depending on if it was a valid account number or not.
+- After each guess, the script will log the attempted account number in either `goodaccounts.txt` or `bad.txt`, depending on whether or not the account is valid. If running on Windows, will also send a notification upon finding a valid account.
 - Deactivate venv if using one: `deactivate`
 
 ### To do:
