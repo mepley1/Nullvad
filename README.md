@@ -8,7 +8,7 @@ With the number of users they report, and the rate limiting that I've encountere
 ## Usage:
 - Create and activate a venv if preferred: `python -m venv venv`
   - Activate venv, Linux: `source venv/bin/activate`
-  - Activate venv, Windows: `.\venv\Scripts\Activate.ps1` (or activate.bat in CMD)
+  - Activate venv, Windows Powershell: `.\venv\Scripts\Activate.ps1`
 - Install required modules: `pip install -r requirements.txt`
 - Run the script: `python -m guesser.py`
 - Choose an option: Create new account, account brute force, or brute force with proxy
