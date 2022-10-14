@@ -9,7 +9,7 @@ Proof of concept, don't try to use this script for unethical purposes, you won't
   - Activate venv, Windows Powershell: `.\venv\Scripts\Activate.ps1`
 - Install required modules: `pip install -r requirements.txt`
 - Optional: In the top of the script, set the `COOLDOWN` constant equal to the rate limit you want to follow (in seconds)
-- Run the script: `python -m guesser.py`
+- Run the script: `python guesser.py`
 - Choose an option: Create new account, account brute force, or brute force with proxy
   - If using a proxy, enter your full proxy URL including scheme i.e. `socks5h://1.2.3.4:4145`
 - Enter the number of guesses you want it to make, or 0 to run indefinitely
