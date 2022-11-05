@@ -1,7 +1,8 @@
 # Nullvad
+
 Automatically brute force account #s for a certain commercial VPN.
 
-Proof of concept, don't try to use this script for unethical purposes, you won't find any working account numbers anyway.
+Don't use this script for unethical purposes, you won't find any working account numbers anyway.
 
 ## Usage:
 - Optional: Create a venv if preferred: `python3 -m venv venv`
