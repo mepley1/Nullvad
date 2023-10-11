@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-# Mullvad VPN account brute force, proof of concept
+# Mullvad VPN account brute force
 # Do not use this script for unlawful or irresponsible purpose
+# Just buy an account, it's $5.
 
 import argparse
 import requests
@@ -13,11 +14,11 @@ from colorama import init, Fore, Style
 from plyer import notification
 
 # parse command-line arguments
-parser = argparse.ArgumentParser(description = 'Mullvad account # brute forcer.')
+parser = argparse.ArgumentParser(description = 'Nullvad: Account # brute forcer. Do not use for unethical purposes.')
 parser.add_argument('-r', '--ratelimit', type = int, default = 20, help = 'Rate limit, in seconds. Default: 20')
 parser.add_argument('-p', '--proxy', default = '', help = 'Proxy URL including scheme, i.e. socks5h://1.2.3.4:4145. Default: none')
 parser.add_argument('-g', '--guesses', type = int, default = 0, help = 'Number of requests to make. Default: Infinite')
-parser.add_argument('-n', '--newaccount', help = 'Register new Mullvad account. Default 1, or enter number of accounts to create.')
+parser.add_argument('-n', '--newaccount', help = 'Register new account. Default 1, or enter number of accounts to create.')
 args = parser.parse_args()
 
 init() # initialize colorama
@@ -25,7 +26,7 @@ init() # initialize colorama
 headers = {
     "Accept": "application/json, text/plain, */*",
     "Accept-Encoding": "gzip, deflate, br",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0 (Somebody is using my script for unethical purposes)",
     "Content-Type": "application/json",
     }
 
@@ -99,7 +100,7 @@ def main():
     ░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░▓  ░░ ▒░▓  ░░ ▐░   ▒▒   ▓▒█░ ▒▒▓  ▒ 
     ░ ░░   ░ ▒░░░▒░ ░ ░ ░ ░ ▒  ░░ ░ ▒  ░░ ░░    ▒   ▒▒ ░ ░ ▒  ▒ 
        ░   ░ ░  ░░░ ░ ░   ░ ░     ░ ░     ░░    ░   ▒    ░ ░  ░ 
-             ░    ░         ░  ░    ░  ░ by Mike E     ░   ░  ░    
+             ░    ░         ░  ░    ░  ░   RogueAutomata ░   ░  ░    
                                           ░              ░      
     ''')
     print(Style.RESET_ALL)
