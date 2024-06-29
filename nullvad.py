@@ -16,7 +16,7 @@ from plyer import notification
 
 # parse command-line arguments
 parser = argparse.ArgumentParser(description = 'Nullvad: Account # brute forcer. Do not use for unethical purposes.')
-parser.add_argument('-r', '--ratelimit', type = int, default = 30, help = 'Rate limit, in seconds. Default: 20')
+parser.add_argument('-r', '--ratelimit', type = int, default = 300, help = 'Rate limit, in seconds. Default: 20')
 parser.add_argument('-p', '--proxy', default = '', help = 'Proxy URL including scheme, i.e. socks5h://1.2.3.4:4145. Default: none')
 parser.add_argument('-g', '--guesses', type = int, default = 0, help = 'Number of requests to make. Default: Infinite')
 parser.add_argument('-n', '--newaccount', help = 'Register new account. Default 1, or enter number of accounts to create.')
@@ -85,7 +85,8 @@ def guess():
             cd = re.findall(r'\b\d+\b', resps.text)
             # add 5 extra seconds to be safe
             cd = int(cd[0]) + 5
-            print(Fore.RED + f'Warning: Throttled! Pausing for {cd} seconds' + Style.RESET_ALL)
+            current_time = time.strftime('%H:%M:%S')
+            print(Fore.RED + f'Warning: Throttled! Pausing for {cd} seconds. Current time: {current_time}' + Style.RESET_ALL)
             notify_win(f'Throttled. Pausing for {cd} seconds.')
             time.sleep(cd)
         else:
